@@ -1,1 +1,3 @@
-print('hello polla')
+
+import glob
+print(glob.glob("img/*.jpg"))

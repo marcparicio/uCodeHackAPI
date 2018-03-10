@@ -13,11 +13,46 @@ require './vendor/slim/slim/Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
 $app = new \Slim\Slim();
 /* Usando GET para consultar los autos */
-$app->get('/img', function () use ($app){
+$app->post('/lel', function () use ($app){
 	//$param['perfil'] = $app->request->post('perfil');
+	$response = array();
+	$nombre_archivo="logs.txt";
+	if(isset($_FILES['image'])){
+		$response['msg']= "true";
+	}else{
+		$response['msg']= "false";
+	}
+	$target_dir = "img/";
+	$target_file = $target_dir . basename($_FILES["image"]["name"]);
+	if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+        $command = escapeshellcmd('test.py');
+		$output = shell_exec($command);
+	    //$image = @file_get_contents("/img/JPEG_20180310_121929_680701030.jpg");
+		$path = 'img/nike.jpg';
+		$type = pathinfo($path, PATHINFO_EXTENSION);
+		$data = file_get_contents($path);
+		$base64 = base64_encode($data);
+	    //$response->write($image);
+	    echo json_encode($base64);
+    	//echo $response->withHeader('Content-Type', FILEINFO_MIME_TYPE);
+    }
+	 if($archivo = fopen($nombre_archivo, "a"))
+    {
+        if(fwrite($archivo, date("d m Y H:m:s"). " ". json_encode($base64). "\n"))
+        {
+            echo "Se ha ejecutado correctamente";
+        }
+        else
+        {
+            echo "Ha habido un problema al crear el archivo";
+        }
+ 
+        fclose($archivo);
+    }
 
-	$output = exec('test.py');
-	echo $output;
+	//$output = exec('test.py');
+	//echo $output;
+	//echoResponse(200, $response);
  
 });
 $app->get('/auto', function () {
