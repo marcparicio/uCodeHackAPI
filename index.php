@@ -17,7 +17,6 @@ $app->get('/img', function () use ($app){
 	//$param['perfil'] = $app->request->post('perfil');
 
 	$command = escapeshellcmd('test.py');
-	echo $command;
 	$output = shell_exec($command);
 	echo $output;
  
