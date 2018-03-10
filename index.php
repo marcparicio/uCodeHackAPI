@@ -1,18 +1,8 @@
 <?php
-/**
-*
-* @About: API Interface
-* @File: index.php
-* @Date: $Date:$ May-2016
-* @Version: $Rev:$ 1.0
-* @Developer: Federico Guzman (federicoguzman@gmail.com)
-**/
 
-/* Los headers permiten acceso desde otro dominio (CORS) a nuestro REST API o desde un cliente remoto via HTTP
-* Removiendo las lineas header() limitamos el acceso a nuestro RESTfull API a el mismo dominio
-* Nótese los métodos permitidos en Access-Control-Allow-Methods. Esto nos permite limitar los métodos de consulta a nuestro RESTfull API
-* Mas información: https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
-**/
+
+
+echo "hola";
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS');
@@ -22,10 +12,6 @@ header('P3P: CP="IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA"');
 
 include_once './include/Config.php';
 
-/* Puedes utilizar este file para conectar con base de datos incluido en este demo;
-* si lo usas debes eliminar el include_once del file Config ya que le mismo está incluido en DBHandler
-**/
-//require_once '../include/DbHandler.php';
 
 require 'C:\xampp\htdocs\restapi\vendor\slim\slim\Slim\Slim.php';
 \Slim\Slim::registerAutoloader();
@@ -41,11 +27,7 @@ $app->get('/img', function () use ($app){
 $app->get('/auto', function () {
 
 $response = array();
-//$db = new DbHandler();
 
-/* Array de autos para ejemplo response
-* Puesdes usar el resultado de un query a la base de datos mediante un metodo en DBHandler
-**/
 $autos = array(
 array('make'=>'Toyota', 'model'=>'Corolla', 'year'=>'2006', 'MSRP'=>'18,000'),
 array('make'=>'Nissan', 'model'=>'Sentra', 'year'=>'2010', 'MSRP'=>'22,000')
