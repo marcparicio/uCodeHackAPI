@@ -16,8 +16,8 @@ $app = new \Slim\Slim();
 /* Usando GET para consultar los autos */
 $app->get('/img', function () use ($app){
 	//$param['perfil'] = $app->request->post('perfil');
-	echo "hello";
-	$command = escapeshellcmd('test.py');
+
+	$command = escapeshellcmd('heroku/python/test.py');
 	$output = shell_exec($command);
 	echo $output;
  
