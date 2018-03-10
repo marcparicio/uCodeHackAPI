@@ -2,7 +2,6 @@
 
 
 
-echo "hola";
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS');
@@ -13,7 +12,7 @@ header('P3P: CP="IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA"');
 include_once './include/Config.php';
 
 
-require 'C:\xampp\htdocs\restapi\vendor\slim\slim\Slim\Slim.php';
+require './vendor/slim/slim/Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
 $app = new \Slim\Slim();
 /* Usando GET para consultar los autos */
