@@ -16,8 +16,7 @@ $app = new \Slim\Slim();
 $app->get('/img', function () use ($app){
 	//$param['perfil'] = $app->request->post('perfil');
 
-	$command = escapeshellcmd('test.py');
-	$output = shell_exec($command);
+	$output = exec('test.py');
 	echo $output;
  
 });
