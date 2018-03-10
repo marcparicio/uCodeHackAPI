@@ -16,7 +16,7 @@ $app = new \Slim\Slim();
 $app->get('/img', function () use ($app){
 	//$param['perfil'] = $app->request->post('perfil');
 
-	$command = escapeshellcmd('heroku/python/test.py');
+	$command = escapeshellcmd('../test.py');
 	$output = shell_exec($command);
 	echo $output;
  
