@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} !https 
+RewriteRule ^(.*)$ %{ENV:BASE}index.php [QSA,L]
